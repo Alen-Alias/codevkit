@@ -56,7 +56,7 @@ export function JsonYamlComponent() {
         </>
       }
     >
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         <SplitPane>
           <div className="space-y-2">
             <label className="text-sm font-medium">
@@ -65,7 +65,7 @@ export function JsonYamlComponent() {
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="min-h-[500px] font-mono text-sm resize-none"
+              className="min-h-[200px] sm:min-h-[500px] font-mono text-sm resize-none"
               placeholder={`Enter ${direction === 'json-to-yaml' ? 'JSON' : 'YAML'}...`}
             />
           </div>
@@ -79,7 +79,7 @@ export function JsonYamlComponent() {
               <Textarea
                 value={output}
                 readOnly
-                className="min-h-[500px] font-mono text-sm resize-none bg-muted"
+                className="min-h-[200px] sm:min-h-[500px] font-mono text-sm resize-none bg-muted"
               />
             )}
           </div>

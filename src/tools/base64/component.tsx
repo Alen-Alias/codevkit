@@ -68,8 +68,8 @@ export function Base64Component() {
         </>
       }
     >
-      <div className="p-6 space-y-4">
-        <div className="flex items-center gap-4">
+      <div className="p-4 sm:p-6 space-y-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Tabs value={mode} onValueChange={(v) => setMode(v as Mode)}>
             <TabsList>
               <TabsTrigger value="encode">Encode</TabsTrigger>
@@ -92,7 +92,7 @@ export function Base64Component() {
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="min-h-[400px] font-mono text-sm resize-none"
+              className="min-h-[200px] sm:min-h-[400px] font-mono text-sm resize-none"
               placeholder={mode === 'encode' ? 'Enter text to encode...' : 'Enter Base64 to decode...'}
             />
           </div>
@@ -105,7 +105,7 @@ export function Base64Component() {
               <Textarea
                 value={output}
                 readOnly
-                className="min-h-[400px] font-mono text-sm resize-none bg-muted"
+                className="min-h-[200px] sm:min-h-[400px] font-mono text-sm resize-none bg-muted"
               />
             )}
           </div>

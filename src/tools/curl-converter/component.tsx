@@ -47,7 +47,7 @@ export function CurlConverterComponent() {
         </>
       }
     >
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* cURL input */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
@@ -71,7 +71,7 @@ export function CurlConverterComponent() {
           <>
             {/* Parsed summary */}
             <div className="flex items-center gap-3 flex-wrap text-sm">
-              <span className={`font-mono font-semibold px-2 py-0.5 rounded text-xs ${
+              <span className={`font-mono font-semibold px-2 py-0.5 rounded text-xs shrink-0 ${
                 parsed.method === 'GET' ? 'bg-blue-500/20 text-blue-400' :
                 parsed.method === 'POST' ? 'bg-green-500/20 text-green-400' :
                 parsed.method === 'DELETE' ? 'bg-red-500/20 text-red-400' :
@@ -79,7 +79,7 @@ export function CurlConverterComponent() {
               }`}>
                 {parsed.method}
               </span>
-              <span className="font-mono text-muted-foreground text-xs truncate max-w-xs">{parsed.url}</span>
+              <span className="font-mono text-muted-foreground text-xs truncate max-w-[200px] sm:max-w-xs">{parsed.url}</span>
               {Object.keys(parsed.headers).length > 0 && (
                 <span className="text-xs text-muted-foreground">{Object.keys(parsed.headers).length} header(s)</span>
               )}

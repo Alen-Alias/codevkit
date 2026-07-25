@@ -68,7 +68,7 @@ export function ColorConverterComponent() {
       title="Color Converter"
       description="Convert between HEX, RGB, HSL and check WCAG contrast ratios"
     >
-      <div className="p-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Color Converter */}
         <div className="space-y-6">
           <h3 className="text-sm font-semibold">Color Converter</h3>

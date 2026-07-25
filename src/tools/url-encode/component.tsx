@@ -44,8 +44,8 @@ export function UrlEncodeComponent() {
         </>
       }
     >
-      <div className="p-6 space-y-4">
-        <div className="flex items-center gap-6">
+      <div className="p-4 sm:p-6 space-y-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
           <RadioGroup value={mode} onValueChange={(v) => setMode(v as any)}>
             <div className="flex gap-4">
               <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export function UrlEncodeComponent() {
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="min-h-[400px] font-mono text-sm resize-none"
+              className="min-h-[200px] sm:min-h-[400px] font-mono text-sm resize-none"
               placeholder="Enter URL..."
             />
           </div>
@@ -90,7 +90,7 @@ export function UrlEncodeComponent() {
             {error ? (
               <ErrorInline message={error} />
             ) : (
-              <Textarea value={output} readOnly className="min-h-[400px] font-mono text-sm resize-none bg-muted" />
+              <Textarea value={output} readOnly className="min-h-[200px] sm:min-h-[400px] font-mono text-sm resize-none bg-muted" />
             )}
           </div>
         </SplitPane>

@@ -75,7 +75,7 @@ export function TimestampComponent() {
       title="Unix Timestamp"
       description="Convert between Unix timestamps and human-readable dates"
     >
-      <div className="p-6 space-y-8 max-w-2xl">
+      <div className="p-4 sm:p-6 space-y-8 max-w-2xl">
         {/* Live clock */}
         <div className="bg-card border border-border rounded-lg p-5">
           <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Current Time</h3>
@@ -83,14 +83,14 @@ export function TimestampComponent() {
             <div>
               <div className="text-xs text-muted-foreground mb-1">Seconds</div>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xl font-medium">{Math.floor(now / 1000)}</span>
+                <span className="font-mono text-xl font-medium truncate">{Math.floor(now / 1000)}</span>
                 <CopyButton text={String(Math.floor(now / 1000))} />
               </div>
             </div>
             <div>
               <div className="text-xs text-muted-foreground mb-1">Milliseconds</div>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xl font-medium">{now}</span>
+                <span className="font-mono text-xl font-medium truncate">{now}</span>
                 <CopyButton text={String(now)} />
               </div>
             </div>
@@ -102,7 +102,7 @@ export function TimestampComponent() {
         {/* Timestamp → Date */}
         <div className="space-y-4">
           <h3 className="text-sm font-semibold">Timestamp → Date</h3>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <Input
               value={tsInput}
               onChange={(e) => setTsInput(e.target.value)}

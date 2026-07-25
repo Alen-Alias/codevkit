@@ -20,7 +20,7 @@
 
 ---
 
-**CodevKit** is a free, privacy-first, all-in-one online developer toolkit. It provides 12+ client-side developer tools — all running entirely in your browser with **no backend, no ads, no tracking, and no sign-up required**. Data never leaves your device.
+**CodevKit** is a free, privacy-first, all-in-one online developer toolkit. It provides 12+ client-side developer tools — all running entirely in your browser with **no backend, no tracking, and no sign-up required**. Data never leaves your device.
 
 ## Features
 

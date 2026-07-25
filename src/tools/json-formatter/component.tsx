@@ -91,8 +91,8 @@ export function JsonFormatterComponent() {
         </>
       }
     >
-      <div className="p-6 space-y-4">
-        <div className="flex items-center gap-4">
+      <div className="p-4 sm:p-6 space-y-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Tabs value={mode} onValueChange={(v) => setMode(v as Mode)}>
             <TabsList>
               <TabsTrigger value="format">Format</TabsTrigger>
@@ -126,10 +126,10 @@ export function JsonFormatterComponent() {
             <CodeMirror
               value={input}
               onChange={setInput}
-              height="500px"
+              height="300px"
               extensions={[json()]}
               theme={resolvedTheme === 'dark' ? oneDark : undefined}
-              className="border border-input rounded-md overflow-hidden font-mono text-sm [&_.cm-editor]:bg-background [&_.cm-editor]:text-foreground"
+              className="border border-input rounded-md overflow-hidden font-mono text-sm [&_.cm-editor]:bg-background [&_.cm-editor]:text-foreground min-h-[200px] sm:min-h-[300px]"
               basicSetup={{
                 lineNumbers: true,
                 foldGutter: true,
@@ -145,10 +145,10 @@ export function JsonFormatterComponent() {
               <CodeMirror
                 value={output}
                 readOnly
-                height="500px"
+                height="300px"
                 extensions={[json()]}
                 theme={resolvedTheme === 'dark' ? oneDark : undefined}
-                className="border border-input rounded-md overflow-hidden font-mono text-sm [&_.cm-editor]:bg-background [&_.cm-editor]:text-foreground"
+                className="border border-input rounded-md overflow-hidden font-mono text-sm [&_.cm-editor]:bg-background [&_.cm-editor]:text-foreground min-h-[200px] sm:min-h-[300px]"
                 basicSetup={{
                   lineNumbers: true,
                   foldGutter: true,

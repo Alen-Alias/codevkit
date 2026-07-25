@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Star, Clock, Settings, ChevronDown, ChevronRight, Terminal } from 'lucide-react';
+import { Search, Star, Clock, Settings, ChevronDown, ChevronRight, Terminal, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { plugins, CATEGORIES, CATEGORY_LABELS } from '@/lib/plugin-registry';
 import { useFavorites } from '@/contexts/favorites-context';
@@ -13,7 +13,12 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import type { Category } from '@/lib/types';
 import { accordionContent, sidebarItem, staggerFast } from '@/lib/animation';
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [location] = useLocation();
   const { open } = useCommandPalette();
   const { favorites } = useFavorites();
@@ -40,11 +45,11 @@ export function Sidebar() {
     .map((id) => plugins.find((p) => p.id === id))
     .filter(Boolean);
 
-  return (
-    <aside className="w-60 shrink-0 border-r border-sidebar-border bg-sidebar flex flex-col h-full">
+  const sidebarContent = (
+    <>
       {/* Logo */}
-      <div className="px-4 py-4 border-b border-sidebar-border">
-        <Link href="/">
+      <div className="px-4 py-4 border-b border-sidebar-border flex items-center justify-between">
+        <Link href="/" onClick={onClose}>
           <motion.div
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
@@ -62,6 +67,9 @@ export function Sidebar() {
             </span>
           </motion.div>
         </Link>
+        <button onClick={onClose} className="lg:hidden p-1 text-muted-foreground hover:text-foreground rounded-md">
+          <X className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Search */}
@@ -69,7 +77,7 @@ export function Sidebar() {
         <motion.button
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.99 }}
-          onClick={open}
+          onClick={() => { open(); onClose(); }}
           className="group w-full flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground bg-sidebar-accent hover:bg-accent rounded-md transition-all duration-200 border border-sidebar-border hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
         >
           <Search className="w-3.5 h-3.5 transition-all duration-200 group-hover:text-primary" />
@@ -99,7 +107,7 @@ export function Sidebar() {
               const Icon = plugin.icon;
               return (
                 <motion.div key={plugin.id} variants={sidebarItem}>
-                  <Link href={`/tools/${plugin.slug}`}>
+                  <Link href={`/tools/${plugin.slug}`} onClick={onClose}>
                     <motion.div
                       whileHover={{ x: 3 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -137,7 +145,7 @@ export function Sidebar() {
               const Icon = plugin.icon;
               return (
                 <motion.div key={plugin.id} variants={sidebarItem}>
-                  <Link href={`/tools/${plugin.slug}`}>
+                  <Link href={`/tools/${plugin.slug}`} onClick={onClose}>
                     <motion.div
                       whileHover={{ x: 3 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -199,7 +207,7 @@ export function Sidebar() {
                         const Icon = plugin.icon;
                         return (
                           <motion.div key={plugin.id} variants={sidebarItem}>
-                            <Link href={`/tools/${plugin.slug}`}>
+                            <Link href={`/tools/${plugin.slug}`} onClick={onClose}>
                               <motion.div
                                 whileHover={{ x: 3 }}
                                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -242,7 +250,7 @@ export function Sidebar() {
 
       {/* Bottom actions */}
       <div className="border-t border-sidebar-border px-3 py-3 flex items-center justify-between">
-        <Link href="/settings">
+        <Link href="/settings" onClick={onClose}>
           <Button
             variant="ghost"
             size="sm"
@@ -257,6 +265,40 @@ export function Sidebar() {
         </Link>
         <ThemeToggle />
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop sidebar */}
+      <aside className="hidden lg:flex w-60 shrink-0 border-r border-sidebar-border bg-sidebar flex-col h-full">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile drawer overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+              onClick={onClose}
+            />
+            <motion.aside
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="fixed inset-y-0 left-0 z-50 w-72 border-r border-sidebar-border bg-sidebar flex flex-col h-full lg:hidden shadow-2xl"
+            >
+              {sidebarContent}
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

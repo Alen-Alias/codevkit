@@ -82,10 +82,10 @@ export function HomePage() {
         animate="visible"
         className="border-b border-border bg-gradient-to-b from-card to-background"
       >
-        <div className="max-w-3xl mx-auto px-6 py-16 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16 text-center">
           <motion.div
             variants={fadeInUp}
-            className="inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted border border-border rounded-full px-3 py-1.5 mb-8"
+            className="inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted border border-border rounded-full px-3 py-1.5 mb-6 sm:mb-8"
           >
             <Shield className="w-3 h-3 text-primary" />
             Everything runs locally — nothing leaves your browser
@@ -93,17 +93,17 @@ export function HomePage() {
 
           <motion.h1
             variants={fadeInUp}
-            className="text-4xl font-semibold tracking-tight mb-4"
+            className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight mb-4"
           >
             CodevKit – Free Online Developer Tools,{' '}
             <span className="text-primary">All in One Place</span>
           </motion.h1>
           <motion.p
             variants={fadeInUp}
-            className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto"
+            className="text-muted-foreground text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 max-w-xl mx-auto"
           >
             A fast, private, all-in-one developer toolkit — JSON formatter, Base64,
-            hashing, JWT, regex, and more. No ads, no tracking, no sign-up.
+            hashing, JWT, regex, and more. No tracking, no sign-up.
           </motion.p>
 
           {/* Search box */}
@@ -124,7 +124,7 @@ export function HomePage() {
           {/* Feature badges */}
           <motion.div
             variants={fadeInUp}
-            className="flex items-center justify-center gap-6 mt-8 text-xs text-muted-foreground"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-6 sm:mt-8 text-xs text-muted-foreground"
           >
             <div className="flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5 text-primary" />
@@ -146,7 +146,7 @@ export function HomePage() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="max-w-5xl mx-auto px-6 py-10 space-y-16"
+        className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-12 sm:space-y-16"
       >
         {/* Recent tools */}
         {recentPlugins.length > 0 && (
@@ -317,7 +317,7 @@ export function HomePage() {
           <p className="text-muted-foreground leading-relaxed">
             Students learning to work with JSON and APIs for the first time, professional
             developers who want a faster daily workflow, and anyone tired of hunting for a
-            reliable, ad-free version of a simple tool all turn to CodevKit for the same reason:
+            reliable version of a simple tool all turn to CodevKit for the same reason:
             it's fast, it's private, and it's actually pleasant to use every day. Bookmark it
             once, and you'll always have the <strong>best online developer tools</strong> ready in
             a single tab — no more digging through five different bookmarked sites just to format a

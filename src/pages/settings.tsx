@@ -94,7 +94,7 @@ export function SettingsPage() {
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
-      className="max-w-2xl mx-auto px-6 py-10"
+      className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-10"
     >
       <motion.div variants={fadeInUp} className="mb-8">
         <h1 className="text-2xl font-semibold">Settings</h1>
@@ -112,7 +112,7 @@ export function SettingsPage() {
           <div className="bg-card border border-border rounded-lg p-4 space-y-4">
             <div>
               <Label className="text-sm font-medium mb-3 block">Theme</Label>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {themeOptions.map(({ value, label, icon: Icon }) => (
                   <motion.button
                     key={value}

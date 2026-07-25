@@ -45,7 +45,7 @@ export function UuidGeneratorComponent() {
       title="UUID / NanoID Generator"
       description="Generate cryptographically random unique identifiers"
     >
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         <Tabs defaultValue="uuid">
           <TabsList className="mb-6">
             <TabsTrigger value="uuid">UUID v4</TabsTrigger>
@@ -54,7 +54,7 @@ export function UuidGeneratorComponent() {
 
           {/* UUID Tab */}
           <TabsContent value="uuid" className="space-y-6">
-            <div className="flex items-center gap-6 flex-wrap">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-3">
                 <Label className="text-sm whitespace-nowrap">Count: {uuidCount}</Label>
                 <Slider
@@ -68,7 +68,7 @@ export function UuidGeneratorComponent() {
                 <Switch id="uppercase" checked={uuidUppercase} onCheckedChange={setUuidUppercase} />
                 <Label htmlFor="uppercase" className="text-sm cursor-pointer">Uppercase</Label>
               </div>
-              <div className="flex items-center gap-2 ml-auto">
+              <div className="flex items-center gap-2 sm:ml-auto">
                 <Button variant="outline" size="sm" onClick={() => copyAll(uuids.map(formatUuid))} className="gap-2">
                   <Copy className="w-3.5 h-3.5" />
                   Copy all

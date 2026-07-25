@@ -90,7 +90,7 @@ export function MarkdownComponent() {
         </>
       }
     >
-      <div className="flex h-[calc(100vh-9rem)] border-t border-border">
+      <div className="flex h-[calc(100vh-12rem)] sm:h-[calc(100vh-9rem)] border-t border-border">
         {view === 'split' && (
           <>
             <div className="w-1/2 border-r border-border flex flex-col overflow-hidden">
